@@ -1,57 +1,33 @@
-import './App.css';
+import React from 'react'
+import { Routes, Route, Link } from 'react-router-dom'
+import { Layout, Typography, Space } from 'antd'
+import "./App.css"
 
-import React from "react";
-import axios from "axios";
-import {Row, Col, Image} from 'antd'
-import { useState, useEffect } from "react";
+import Navbar from './components/Navbar/Navbar'
+import Home from './components/Home/Home'
+import CryptoInfo from './components/CryptoInfo/CryptoInfo'
+import CryptoNews from './components/CryptoNews/CryptoNews'
 
-import CoinListItems from './features/CoinListItem/CoinListItem';
-
-function App() {
-  const [listCoins, setListCoins] = useState([]);
-
-  useEffect(() => {
-    refreshPage();
-  }, []);
-
-  const refreshPage = () => {
-    axios.get(
-      "https://api.coingecko.com/api/v3/search/trending"
-    ).then((response) => {
-      setListCoins(response.data.coins);
-      console.log(response.data.coins[0].item.name);
-    });
-  };
-
-  const coins = listCoins.map((coin, index) => 
-    <Image
-      key={index}
-      preview={false}
-      src={coin.item.small}
-    />
-    );
-
+const App = () => {
   return (
-    <>
-      {/* {coins} */}
-      {/* <ul>{coins}</ul> */}
-      <Row justify="center">
-          <Col span={12} className='main-cont'>
-            {listCoins.map((coin, index) => 
-                  <CoinListItems
-                    key={index}
-                    img={coin.item.small}
-                    name={coin.item.name}
-                    symbol={coin.item.symbol}
-                    marketCap={coin.item.market_cap_rank}
-                  />
-            )}
-          </Col>
-        </Row>
-      
-      
-    </>
-  );
+    <div className='app'>
+      <div className='navbar'>
+        <Navbar />
+      </div>
+      <div className='main'>
+        <Layout>
+          <div className='routes'>
+            <Routes>
+                <Route path='/' element={<Home/>} />
+                <Route path='/cryptos' element={<CryptoInfo />} />
+                <Route path='/news' element={<CryptoNews />} />
+            </Routes>
+          </div>
+        </Layout>
+      </div>
+      <div className='footer'></div>
+    </div>
+  )
 }
 
-export default App;
+export default App
