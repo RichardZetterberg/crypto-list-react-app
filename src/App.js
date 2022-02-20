@@ -16,16 +16,27 @@ const App = () => {
       </div>
       <div className='main'>
         <Layout>
-          <div className='routes'>
-            <Routes>
-                <Route path='/' element={<Home/>} />
-                <Route path='/cryptos' element={<CryptoInfo />} />
-                <Route path='/news' element={<CryptoNews />} />
-            </Routes>
-          </div>
+            <div className='routes'>
+              <Routes>
+                  <Route path='/' element={<Home/>} />
+                  <Route path='/cryptos' element={<CryptoInfo />} />
+                  <Route path='/news' element={<CryptoNews />} />
+              </Routes>
+            </div>
         </Layout>
+
+        <div className='footer'>
+          <Typography.Title level={5} style={{color:'#FFFFFF', textAlign:'center'}}>
+            CryptoInfo <br />
+            All rights reserver
+          </Typography.Title>
+          <Space>
+            <Link to='/'>Home</Link>
+            <Link to='/'>Cryptos</Link>
+            <Link to='/'>News</Link>
+          </Space>
+        </div>
       </div>
-      <div className='footer'></div>
     </div>
   )
 }
