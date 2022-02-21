@@ -7,23 +7,28 @@ import './CryptoInfo.css';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
 
 const { Search } = Input;
-const onSearch = value => console.log(value);
 
 const CryptoInfo = ({ simplified }) => {
+
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
   const [searchText, setSearchText] = useState('');
 
-  console.log(cryptos);
+  useEffect(() => {
+    const filterData = cryptosList?.data?.coins.filter(
+      (coin) => coin.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+
+    setCryptos(filterData);
+  }, [cryptosList, searchText]);
 
   return (
     <>
       <Row justify='center'>
         <Col span={12}>
           <Search 
-            placeholder="Find coin" 
-            onSearch={onSearch}
+            placeholder="Find coin"
             onChange={(e) => setSearchText(e.target.value)} 
             enterButton
             style={{height:'60px'}}
