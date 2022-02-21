@@ -28,7 +28,7 @@ a:hover{
 }
 
 .main{
-  height: 100vh;
+  /* height: 100vh; */
   flex: 0.8;
   width: 100%; 
 }
