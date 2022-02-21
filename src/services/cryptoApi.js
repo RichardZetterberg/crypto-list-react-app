@@ -22,11 +22,3 @@ export const cryptoApi = createApi({
 export const {
     useGetCryptosQuery
 } = cryptoApi;
-
-// export const { useGetCryptosQuery } = cryptoApi;
-
-//   axios.request(options).then(function (response) {
-//       console.log(response.data);
-//   }).catch(function (error) {
-//       console.error(error);
-//   });

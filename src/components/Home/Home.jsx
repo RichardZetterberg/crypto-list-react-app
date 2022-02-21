@@ -32,7 +32,7 @@ const Home = () => {
         </Col>
         <Col span={12}>
           <Row justify='end'>
-            <Title level={3}><Link to="/">Show more</Link></Title>
+            <Title level={3}><Link to="/cryptos">Show more</Link></Title>
           </Row>
         </Col>
       </Row>

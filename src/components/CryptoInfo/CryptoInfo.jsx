@@ -25,16 +25,18 @@ const CryptoInfo = ({ simplified }) => {
 
   return (
     <>
-      <Row justify='center'>
-        <Col span={12}>
-          <Search 
-            placeholder="Find coin"
-            onChange={(e) => setSearchText(e.target.value)} 
-            enterButton
-            style={{height:'60px'}}
-          />
-        </Col>
+      {!simplified && (
+        <Row justify='center'>
+          <Col span={12}>
+            <Search 
+              placeholder="Find coin"
+              onChange={(e) => setSearchText(e.target.value)} 
+              enterButton
+              style={{height:'60px'}}
+            />
+          </Col>
       </Row>
+      )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((coin, index)=> (
           <Col xs={24} sm={12} lg={6} className="crypto-card" key={coin.id}>

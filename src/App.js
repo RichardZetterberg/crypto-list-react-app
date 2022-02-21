@@ -32,8 +32,8 @@ const App = () => {
           </Typography.Title>
           <Space>
             <Link to='/'>Home</Link>
-            <Link to='/'>Cryptos</Link>
-            <Link to='/'>News</Link>
+            <Link to='/cryptos'>Cryptos</Link>
+            <Link to='/news'>News</Link>
           </Space>
         </div>
       </div>
@@ -41,4 +41,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;
