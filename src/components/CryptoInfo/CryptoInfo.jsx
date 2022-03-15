@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
-import { Card, Row, Col, Input } from 'antd';
+import { Card, Row, Col, Input, Image } from 'antd';
 import './CryptoInfo.css';
 
 import { useGetCryptosQuery } from '../../services/cryptoApi';
@@ -35,21 +35,24 @@ const CryptoInfo = ({ simplified }) => {
               style={{height:'60px'}}
             />
           </Col>
-      </Row>
+        </Row>
       )}
       <Row gutter={[32, 32]} className="crypto-card-container">
-        {cryptos?.map((coin, index)=> (
-          <Col xs={24} sm={12} lg={6} className="crypto-card" key={coin.id}>
-            <Card
-              key={index}
-              title={`${coin.rank}. ${coin.name}`}
-              extra={<img className='crypto-image' src={coin.iconUrl} />}
-              hoverable
-            >
-              <p>Price: {millify(coin.price)}</p>
-              <p>Market Cap: {millify(coin.marketCap)}</p>
-              <p>Daily Change: {millify(coin.change)}</p>
-            </Card>
+        {cryptos?.map(( coin, index ) => (
+          <Col xs={24} sm={12} lg={6} key={coin.id}>
+            <Link to={`/crypto/${coin.uuid}`}>
+              <Card
+                key={index}
+                title={`${coin.rank}. ${coin.name}`}
+                extra={<Image src={coin.iconUrl} preview={false} style={{width:'45px'}} />}
+                style={{backgroundColor:"var(--light-white)"}}
+                hoverable
+              >
+                <p>Price: {millify(coin.price)}</p>
+                <p>Market Cap: {millify(coin.marketCap)}</p>
+                <p>Daily Change: {millify(coin.change)}</p>
+              </Card>
+            </Link>  
           </Col>
         ))}
       </Row>

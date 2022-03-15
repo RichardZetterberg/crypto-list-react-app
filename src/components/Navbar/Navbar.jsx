@@ -1,19 +1,19 @@
 import React from 'react'
-import { Row, Col, Typography, Avatar, Menu } from 'antd'
+import { Row, Typography, Avatar, Menu } from 'antd'
 import { Link } from 'react-router-dom'
 import { UserOutlined, HomeOutlined, DollarCircleOutlined, BulbOutlined } from '@ant-design/icons';
 import "./Navbar.css"
 
 const Navbar = () => {
   return (
-    <div className='nav-container'>
+    <div className='navbar'>
         <Row justify='space-around'>
             <Typography.Title level={2} className="logo">
                 <Link to="/">CryptoInfo</Link>
             </Typography.Title>
             <Avatar size="large" icon={<UserOutlined/>} />
         </Row>
-        <Menu theme="dark">
+        <Menu theme="dark" style={{backgroundColor:'var(--text-primary)'}}>
             <Menu.Item key='1' icon={<HomeOutlined />}>
                 <Link to='/'>Home</Link>
             </Menu.Item>
@@ -28,7 +28,6 @@ const Navbar = () => {
                 </Link>
             </Menu.Item>
         </Menu>
-    
     </div>
   )
 }

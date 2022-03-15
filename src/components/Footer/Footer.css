@@ -1,0 +1,12 @@
+.footer {
+    background-color: var(--bgPrimary);
+    padding: 20px;
+}
+
+.footer a {
+    color: var(--light-green) !important;
+}
+  
+.footer a:hover{
+    color: #FFFFFF !important;
+}

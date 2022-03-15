@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Card, Select, Typography, Image, Avatar } from 'antd';
 import { useGetNewsQuery } from '../../services/cryptoNewsApi';
+import { useGetCryptosQuery } from '../../services/cryptoApi';
 import moment from 'moment';
 
 const { Text, Title } = Typography;
 const { Option } = Select;
 
 const CryptoNews = ( {simplified} ) => {
+  const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
+  const { data } = useGetCryptosQuery(100);
 
   const { data: cryptoNews } = useGetNewsQuery({
-    newsCategory: 'Cryptocurrency',
+    newsCategory: newsCategory,
     count: simplified ? 10 : 100,
   });
 
@@ -18,11 +21,28 @@ const CryptoNews = ( {simplified} ) => {
   return (
     <>
       <Row gutter={[ 24, 24 ]}>
+        {!simplified && (
+          <Col span={24}>
+            <Select
+              showSearch
+              style={{ width: 180 }}
+              placeholder="Select a crypto"
+              optionFilterProp="children"
+              onChange={(value) => setNewsCategory(value)}
+              filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+            >
+              <Option value="Cryptocurrency">Cryptocurrency</Option>
+              {data?.data?.coins.map(
+                (coin) => <Option value={coin.name}>{coin.name}</Option>
+              )}
+            </Select>
+          </Col>
+        )}
         {cryptoNews?.value.map((news, index) => (
           <Col xs={24} sm={12} lg={8} key={index}>
             <Card 
               hoverable
-              style={{minHeight:'200px'}}
+              style={{minHeight:'320px'}}
             >
               <a href={news.url} target='_blank' rel="norefferer">
                 <Row justify='space-around'>

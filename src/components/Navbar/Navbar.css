@@ -1,0 +1,12 @@
+.navbar{
+    flex: 0.16;
+    background-color: var(--text-primary);
+}
+
+.navbar a {
+    color: var(--light-green) !important;
+}
+  
+.navbar a:hover{
+    color: var(--light-white) !important;
+}
