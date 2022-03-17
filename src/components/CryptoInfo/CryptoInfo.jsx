@@ -39,7 +39,7 @@ const CryptoInfo = ({ simplified }) => {
       )}
       <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map(( coin, index ) => (
-          <Col xs={24} sm={12} lg={6} key={coin.id}>
+          <Col xs={24} sm={12} lg={6} key={index}>
             <Link to={`/crypto/${coin.uuid}`}>
               <Card
                 key={index}
