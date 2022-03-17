@@ -1,7 +1,8 @@
 import React from 'react'
-import { Row, Typography, Avatar, Menu } from 'antd'
+import { Row, Typography, Avatar, Menu, Image } from 'antd'
 import { Link } from 'react-router-dom'
-import { UserOutlined, HomeOutlined, DollarCircleOutlined, BulbOutlined } from '@ant-design/icons';
+import { HomeOutlined, DollarCircleOutlined, BulbOutlined } from '@ant-design/icons';
+import navbarLogo from '../../static/navbar-logo.svg'
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -11,7 +12,7 @@ const Navbar = () => {
             <Typography.Title level={2} className="logo">
                 <Link to="/">CryptoInfo</Link>
             </Typography.Title>
-            <Avatar size="large" icon={<UserOutlined/>} />
+            <Avatar src={navbarLogo} style={{marginTop:'8px'}}/>
         </Row>
         <Menu theme="dark" style={{backgroundColor:'var(--text-primary)'}}>
             <Menu.Item key='1' icon={<HomeOutlined />}>
