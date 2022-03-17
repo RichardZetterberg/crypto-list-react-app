@@ -68,12 +68,12 @@ const CryptoDetails = () => {
                 {time.map((date) => <Option key={date}>{date}</Option>)}
             </Select>
 
-            {/* <LineChart 
+            <LineChart 
                 coinHistory={coinHistory}
-                currencyPrice={millify(cryptoDetails.price)}
+                currentPrice={millify(cryptoDetails.price)}
                 coinName={cryptoDetails.name}
-            /> */}
-
+            />
+           
             <Col className="stats-container">
                 <Col span={12}>
                     <Col className="coin-value-statistics-heading">
@@ -86,7 +86,7 @@ const CryptoDetails = () => {
                     </Col>
 
                     {stats.map(({ icon, title, value }) => (
-                        <Col className="coin-stats">
+                        <Col className="coin-stats" key={value}>
                             <Col className="coin-stats-name">
                                 <Text>{icon}</Text>
                                 <Text>{title}</Text>
@@ -106,7 +106,7 @@ const CryptoDetails = () => {
                         </p>
                     </Col>
                     {genericStats.map(({ icon, title, value }) => (
-                        <Col className="coin-stats">
+                        <Col className="coin-stats" key={value}>
                             <Col className="coin-stats-name">
                                 <Text>{icon}</Text>
                                 <Text>{title}</Text>
@@ -121,9 +121,9 @@ const CryptoDetails = () => {
                 <Row className="coin-desc">
                     <Col>
                         <Title level={3} className="coin-details-heading">
-                            What is {cryptoDetails.name}?
-                            {HTMLReactParser(cryptoDetails.description)}
+                            What is {cryptoDetails.name}
                         </Title>
+                        {HTMLReactParser(cryptoDetails.description)}
                     </Col>
                     
                 </Row>
@@ -133,7 +133,7 @@ const CryptoDetails = () => {
                         {cryptoDetails.name} Links
                     </Title>
                     {cryptoDetails.links.map((link) => (
-                        <Row className="coin-link" key={link.name}>
+                        <Row className="coin-link" key={link.type}>
                             <Title level={5} className="link-name">
                                 {link.type}
                             </Title>
@@ -141,6 +141,7 @@ const CryptoDetails = () => {
                                 {link.name}
                             </a>
                         </Row>
+                        // console.log(link)
                     ))}
                 </Col>
             </Col>

@@ -18,15 +18,67 @@ const Home = () => {
   return (
     <>
       <Title level={2}>Global Crypto Stats</Title>
-      <Row>
-        <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats?.total} /></Col>
-        <Col span={12}><Statistic title="Total Exchanges" value={millify(globalStats?.totalExchanges)} /></Col>
-        <Col span={12}><Statistic title="Total Market Cap" value={millify(globalStats?.totalMarketCap)} /></Col>
-        <Col span={12}><Statistic title="Total 24h Volume" value={millify(globalStats?.total24hVolume)} /></Col>
-        <Col span={12}><Statistic title="Total Markets" value={millify(globalStats?.totalMarkets)} /></Col>
-        <Col span={12}><Statistic title="Total Coins" value={millify(globalStats?.totalCoins)} /></Col>
+      <Row justify='center'>
+        <Col span={12}>
+          <Row justify='center'>
+            <Statistic 
+              title="Total Cryptocurrencies" 
+              value={globalStats?.total} 
+              valueStyle={{display:'flex', justifyContent:'center'}} 
+            />
+          </Row>
+        </Col>
+        <Col span={12}>
+          <Row justify='center'>
+            <Statistic 
+              title="Total Exchanges" 
+              value={millify(globalStats?.totalExchanges)}
+              valueStyle={{display:'flex', justifyContent:'center'}}
+            />
+          </Row>
+        </Col>
+        <Col span={12}>
+          <Row justify='center'>
+            <Statistic 
+              title="Total Market Cap" 
+              value={millify(globalStats?.totalMarketCap)}
+              valueStyle={{display:'flex', justifyContent:'center'}}
+            />
+          </Row> 
+        </Col>
+        <Col span={12}>
+          <Row justify='center'>
+            <Statistic 
+              title="Total 24h Volume"
+              value={millify(globalStats?.total24hVolume)}
+              valueStyle={{display:'flex', justifyContent:'center'}}
+            />
+          </Row>
+        </Col>
+        <Col span={12}>
+          <Row justify='center'>
+            <Statistic 
+              title="Total Markets"
+              value={millify(globalStats?.totalMarkets)}
+              valueStyle={{display:'flex', justifyContent:'center'}}
+            />
+          </Row>
+        </Col>
+        <Col span={12}>
+          <Row justify='center'>
+            <Statistic 
+              title="Total Coins" 
+              value={millify(globalStats?.totalCoins)}
+              valueStyle={{display:'flex', justifyContent:'center'}}
+            />
+          </Row>
+        </Col>
       </Row>
-      <Row justify='space-around'>
+
+      <Row 
+        justify='space-around'
+        style={{marginTop:'40px'}}
+      >
         <Col span={12}>
           <Title level={2}>Top 10 Cryptocurrencies</Title>
         </Col>
@@ -36,7 +88,10 @@ const Home = () => {
           </Row>
         </Col>
       </Row>
-      <CryptoInfo simplified={true} />
+      
+      <Row style={{marginTop:'20px'}}>
+        <CryptoInfo simplified={true} />
+      </Row>
     </>
   )
 }
