@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import SmoothList from 'react-smooth-list';
 import { Row, Col, Card, Select, Typography, Image, Avatar } from 'antd';
 import { useGetNewsQuery } from '../../services/cryptoNewsApi';
@@ -41,21 +41,29 @@ const CryptoNews = ( {simplified} ) => {
         )}
         
         {cryptoNews?.value.map((news, index) => (
-          
           <Col xs={24} sm={12} lg={8} key={index} className="crypto-card">
             <SmoothList transitionDuration={800}>
               <Card 
                 hoverable
-                style={{minHeight:'320px'}}
               >
                 <a href={news.url} target='_blank' rel="norefferer">
                   <Row justify='space-around'>
-                    <Col span={17}><Title level={4}>{news.name}</Title></Col>
-                    <Col span={6}>
-                      <Image preview={false} src={news?.image?.thumbnail?.contentUrl} />
-                    </Col>
+                      {news?.image?.thumbnail ? (
+                        <Fragment>
+                          <Col span={17}>
+                            <Title level={4}>{news.name}</Title>
+                          </Col>
+                          <Col span={6}>
+                            <Image preview={false} src={news.image.thumbnail.contentUrl} />
+                          </Col>
+                        </Fragment>
+                        
+                      ) : (
+                        <Col span={24}><Title level={4}>{news.name}</Title></Col>
+                      )}
+                    
                   </Row>
-                  <p>
+                  <p style={{marginTop:"20px"}}>
                     {news.description > 100
                       ? `${news.description.substring(0, 100)}...`
                       : news.description
