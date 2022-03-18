@@ -5,8 +5,11 @@
 
 .footer a {
     color: var(--light-green) !important;
+    font-size: medium;
+    border-bottom: 1px solid transparent;
 }
   
 .footer a:hover{
     color: #FFFFFF !important;
+    border-bottom: 1px solid black;
 }

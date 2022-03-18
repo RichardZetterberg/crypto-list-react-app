@@ -1,5 +1,7 @@
 .footer-rights {
     background-color: var(--bgPrimary);
+    padding-bottom: 10px;
+    display: inline-block;
 }
 
 .footer-rights span {

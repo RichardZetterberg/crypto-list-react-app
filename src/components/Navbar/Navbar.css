@@ -15,3 +15,7 @@
 .navbar, .navbar-full a:hover{
     color: var(--light-white) !important;
 }
+
+.avatar-logo:hover {
+    cursor: pointer;
+}

@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Row, Col, Typography, Avatar, Menu, Button } from 'antd'
 import { Link } from 'react-router-dom'
 import { HomeOutlined, DollarCircleOutlined, BulbOutlined, MenuOutlined } from '@ant-design/icons';
@@ -6,11 +7,16 @@ import navbarLogo from '../../static/navbar-logo.svg'
 import "./Navbar.css"
 
 const Navbar = () => {
+    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
 
     const toggleCollapsed = () => {
         setCollapsed(!collapsed)
     };
+
+    const addressToHome = () => {
+        navigate("/");
+    }
     
     return (
         <div className={collapsed ? 'navbar' : 'navbar-full'}>
@@ -36,12 +42,22 @@ const Navbar = () => {
                             </Row>
                         </Col>
                         <Col span={5}>
-                            <Avatar src={navbarLogo} style={{marginTop:'8px'}}/>
+                            <Avatar 
+                                className='avatar-logo'
+                                src={navbarLogo} 
+                                style={{marginTop:'8px'}} 
+                                onClick={addressToHome}
+                            />
                         </Col>
                     </Row>
                     ) : (
                         <Row justify='center'>
-                            <Avatar src={navbarLogo} style={{margin:'8px 0 8px 0'}}/>
+                            <Avatar
+                                className='avatar-logo' 
+                                src={navbarLogo} 
+                                style={{margin:'8px 0 8px 0'}} 
+                                onClick={addressToHome}
+                            />
                         </Row>
                     )
                 }
