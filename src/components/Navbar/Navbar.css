@@ -32,4 +32,5 @@
 
 .ant-btn-primary {
     background-color: var(--bgSecondary) !important;
+    border-color: transparent !important;
 }

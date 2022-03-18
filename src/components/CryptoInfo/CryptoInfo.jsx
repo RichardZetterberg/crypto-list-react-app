@@ -27,12 +27,13 @@ const CryptoInfo = ({ simplified }) => {
   return (
     <>
       {!simplified && (
-        <Row justify='center'>
+        <Row justify='center' className='search-container'>
           <Col span={12}>
             <Search 
               placeholder="Find coin"
               onChange={(e) => setSearchText(e.target.value)} 
               enterButton
+              size='large'
               style={{height:'60px'}}
             />
           </Col>

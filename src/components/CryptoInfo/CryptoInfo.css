@@ -11,3 +11,15 @@
     -webkit-transform: scale(1.04); /* Safari 3-8 */
     transform: scale(1.04);
 }
+
+.crypto-card-container .search-info {
+    border-radius: 25px !important;
+}
+
+input .ant-input-search {
+    border-radius: 25px !important;
+}
+
+.search-container .ant-input {
+    border-radius: 10px;
+}
