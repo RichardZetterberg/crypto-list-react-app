@@ -1,12 +1,17 @@
-.navbar{
-    flex: 0.16;
+.navbar {
+    /* flex: 0.16; */
     background-color: var(--text-primary);
 }
 
-.navbar a {
+.navbar-full {
+    min-width: 200px;
+    background-color: var(--text-primary);
+}
+
+.navbar, .navbar-full a {
     color: var(--light-green) !important;
 }
   
-.navbar a:hover{
+.navbar, .navbar-full a:hover{
     color: var(--light-white) !important;
 }
