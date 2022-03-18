@@ -42,7 +42,7 @@ const CryptoNews = ( {simplified} ) => {
         
         {cryptoNews?.value.map((news, index) => (
           
-          <Col xs={24} sm={12} lg={8} key={index}>
+          <Col xs={24} sm={12} lg={8} key={index} className="crypto-card">
             <SmoothList transitionDuration={800}>
               <Card 
                 hoverable
@@ -76,7 +76,6 @@ const CryptoNews = ( {simplified} ) => {
                         <Text>
                           {moment(news.datePublished).startOf('ss').fromNow()}
                         </Text>
-
                       </Row>
                     </Col>
                   </Row>

@@ -42,8 +42,7 @@ const CryptoInfo = ({ simplified }) => {
         
         {cryptos?.map(( coin, index ) => (
           
-          <Col xs={24} sm={12} lg={6} key={index}>
-            
+          <Col xs={24} sm={12} lg={6} key={index} className="crypto-card">
             <Link to={`/crypto/${coin.uuid}`}>
               <SmoothList transitionDuration={800}>
                 <Card

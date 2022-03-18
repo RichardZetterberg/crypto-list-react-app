@@ -1,4 +1,5 @@
 import React from 'react'
+import TypeWriter from 'react-typewriter';
 import millify from 'millify'
 import { Typography, Row, Col, Statistic} from 'antd'
 import { Link } from 'react-router-dom'
@@ -17,7 +18,9 @@ const Home = () => {
 
   return (
     <>
-      <Title level={2}>Global Crypto Stats</Title>
+      <TypeWriter typing={1} maxDelay={10} fixed={true}>
+        <Title level={2}>Global Crypto Stats</Title>
+      </TypeWriter>
       <Row justify='center'>
         <Col span={12}>
           <Row justify='center'>
@@ -80,7 +83,9 @@ const Home = () => {
         style={{marginTop:'40px'}}
       >
         <Col span={12}>
-          <Title level={2}>Top 10 Cryptocurrencies</Title>
+          <TypeWriter typing={1} maxDelay={10} fixed={true}>
+            <Title level={2}>Top 10 Cryptocurrencies</Title>
+          </TypeWriter>
         </Col>
         <Col span={12}>
           <Row justify='end'>

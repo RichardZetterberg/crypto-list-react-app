@@ -1,3 +1,13 @@
 .crypto-card-container{
     min-height: 65vh !important;
 }
+
+.crypto-card {
+    transition: transform .8s; /* Animation */
+}
+
+.crypto-card:hover {
+    -ms-transform: scale(1.04); /* IE 9 */
+    -webkit-transform: scale(1.04); /* Safari 3-8 */
+    transform: scale(1.04);
+}
