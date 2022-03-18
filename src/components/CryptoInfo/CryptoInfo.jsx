@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import SmoothList from 'react-smooth-list';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input, Image } from 'antd';
@@ -38,23 +39,30 @@ const CryptoInfo = ({ simplified }) => {
         </Row>
       )}
       <Row gutter={[32, 32]} className="crypto-card-container">
+        
         {cryptos?.map(( coin, index ) => (
+          
           <Col xs={24} sm={12} lg={6} key={index}>
+            
             <Link to={`/crypto/${coin.uuid}`}>
-              <Card
-                key={index}
-                title={`${coin.rank}. ${coin.name}`}
-                extra={<Image src={coin.iconUrl} preview={false} style={{width:'45px'}} />}
-                style={{backgroundColor:"var(--light-white)"}}
-                hoverable
-              >
-                <p>Price: {millify(coin.price)}</p>
-                <p>Market Cap: {millify(coin.marketCap)}</p>
-                <p>Daily Change: {millify(coin.change)}</p>
-              </Card>
-            </Link>  
+              <SmoothList transitionDuration={800}>
+                <Card
+                  key={index}
+                  title={`${coin.rank}. ${coin.name}`}
+                  extra={<Image src={coin.iconUrl} preview={false} style={{width:'45px'}} />}
+                  style={{backgroundColor:"var(--light-white)"}}
+                  hoverable
+                >
+                  <p>Price: {millify(coin.price)}</p>
+                  <p>Market Cap: {millify(coin.marketCap)}</p>
+                  <p>Daily Change: {millify(coin.change)}</p>
+                </Card>
+              </SmoothList>
+            </Link>
           </Col>
+          
         ))}
+        
       </Row>
     </>
   )
