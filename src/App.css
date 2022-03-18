@@ -24,7 +24,7 @@ a:hover{
   color: var(--blue) !important;
 }
 
-.app{
+.app {
   display: flex;
   overflow: hidden;
 }

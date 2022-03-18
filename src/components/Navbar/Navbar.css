@@ -8,6 +8,10 @@
     background-color: var(--text-primary);
 }
 
+.navbar, .navbar-full {
+    min-height: 100vh;
+}
+
 .navbar, .navbar-full a {
     color: var(--light-green) !important;
 }
@@ -18,4 +22,14 @@
 
 .avatar-logo:hover {
     cursor: pointer;
+}
+
+.nav-btn-top {
+    position: fixed !important;
+    bottom: 0;
+    margin-bottom: 15px;
+}
+
+.ant-btn-primary {
+    background-color: var(--bgSecondary) !important;
 }

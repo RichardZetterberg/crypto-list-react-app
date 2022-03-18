@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { animateScroll as scroll } from "react-scroll";
 import { Row, Col, Typography, Avatar, Menu, Button } from 'antd'
 import { Link } from 'react-router-dom'
-import { HomeOutlined, DollarCircleOutlined, BulbOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, DollarCircleOutlined, BulbOutlined, MenuOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import navbarLogo from '../../static/navbar-logo.svg'
 import "./Navbar.css"
 
 const Navbar = () => {
     const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
+    const [visibleBtn, setVisibleBtn] = useState(false)
+    const [scrollTop, setScrollTop] = useState(500);
 
     const toggleCollapsed = () => {
         setCollapsed(!collapsed)
@@ -17,6 +20,19 @@ const Navbar = () => {
     const addressToHome = () => {
         navigate("/");
     }
+    
+    const scrollToTop = () => {
+        scroll.scrollToTop();
+    };
+
+    useEffect(() => {
+        const onScroll = e => {
+            setScrollTop(e.target.documentElement.scrollTop);
+            setVisibleBtn(e.target.documentElement.scrollTop > scrollTop);
+        };
+        window.addEventListener("scroll", onScroll);
+        return () => window.removeEventListener("scroll", onScroll);
+    }, [scrollTop]);
     
     return (
         <div className={collapsed ? 'navbar' : 'navbar-full'}>
@@ -76,6 +92,22 @@ const Navbar = () => {
                     </Link>
                 </Menu.Item>
             </Menu>
+            
+            {visibleBtn ? (
+                <Row justify='center'>
+                    <Button 
+                        type="primary"
+                        shape="circle"
+                        icon={<ArrowUpOutlined />}
+                        size={"large"}
+                        className='nav-btn-top'
+                        onClick={scrollToTop}
+                    >
+                    </Button>
+                </Row>
+            ):(<></>)}
+
+            
         </div>
   )
 }
