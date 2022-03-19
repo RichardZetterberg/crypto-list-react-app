@@ -2,7 +2,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import "./FooterRights.css";
 
-function FooterRights() {
+const FooterRights = () => {
   return (
     <Row className="footer-rights" align="middle" justify="center">
       <Col span={24}>

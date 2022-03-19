@@ -4,6 +4,7 @@ import millify from 'millify'
 import { BoxLoading } from 'react-loadingg';
 import { Typography, Row, Col, Statistic} from 'antd'
 import { Link } from 'react-router-dom'
+import Navbar from '../Navbar/Navbar'
 
 import { useGetCryptosQuery } from '../../services/cryptoApi'
 

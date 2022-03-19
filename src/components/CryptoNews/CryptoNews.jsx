@@ -18,7 +18,7 @@ const CryptoNews = ( {simplified} ) => {
     count: simplified ? 10 : 100,
   });
 
-  if (isFetching) return <BoxLoading />;
+  if ( isFetching ) return <BoxLoading />;
 
   return (
     <>

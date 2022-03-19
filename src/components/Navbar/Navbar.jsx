@@ -8,10 +8,11 @@ import navbarLogo from '../../static/navbar-logo.svg'
 import "./Navbar.css"
 
 const Navbar = () => {
-    const navigate = useNavigate();
     const [collapsed, setCollapsed] = useState(false);
     const [visibleBtn, setVisibleBtn] = useState(false)
     const [scrollTop, setScrollTop] = useState(500);
+
+    const navigate = useNavigate();
 
     const toggleCollapsed = () => {
         setCollapsed(!collapsed)
@@ -19,6 +20,7 @@ const Navbar = () => {
 
     const addressToHome = () => {
         navigate("/");
+        // console.log('');
     }
     
     const scrollToTop = () => {
