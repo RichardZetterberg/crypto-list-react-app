@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import SmoothList from 'react-smooth-list';
+import { BoxLoading } from 'react-loadingg';
 import millify from 'millify';
 import { Link } from 'react-router-dom';
 import { Card, Row, Col, Input, Image } from 'antd';
@@ -10,7 +11,6 @@ import { useGetCryptosQuery } from '../../services/cryptoApi';
 const { Search } = Input;
 
 const CryptoInfo = ({ simplified }) => {
-
   const count = simplified ? 10 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
@@ -23,6 +23,8 @@ const CryptoInfo = ({ simplified }) => {
 
     setCryptos(filterData);
   }, [cryptosList, searchText]);
+
+  if (isFetching) return <BoxLoading />;
 
   return (
     <>

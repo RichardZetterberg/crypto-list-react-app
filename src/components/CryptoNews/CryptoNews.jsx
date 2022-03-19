@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
 import SmoothList from 'react-smooth-list';
+import { BoxLoading } from 'react-loadingg';
 import { Row, Col, Card, Select, Typography, Image, Avatar } from 'antd';
 import { useGetNewsQuery } from '../../services/cryptoNewsApi';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
@@ -10,14 +11,14 @@ const { Option } = Select;
 
 const CryptoNews = ( {simplified} ) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
-  const { data } = useGetCryptosQuery(100);
+  const { data, isFetching } = useGetCryptosQuery(100);
 
   const { data: cryptoNews } = useGetNewsQuery({
     newsCategory: newsCategory,
     count: simplified ? 10 : 100,
   });
 
-  console.log(cryptoNews);
+  if (isFetching) return <BoxLoading />;
 
   return (
     <>
