@@ -13,11 +13,11 @@
 }
 
 .navbar, .navbar-full a {
-    color: var(--light-green) !important;
+    color: #d9d9d9 !important;
 }
   
 .navbar, .navbar-full a:hover{
-    color: var(--light-white) !important;
+    color: #ffffff !important;
 }
 
 .avatar-logo:hover {
@@ -31,6 +31,6 @@
 }
 
 .ant-btn-primary {
-    background-color: var(--bgSecondary) !important;
+    background-color: #243845 !important;
     border-color: transparent !important;
 }
