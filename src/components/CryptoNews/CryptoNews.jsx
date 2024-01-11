@@ -13,7 +13,6 @@ const CryptoNews = ( {simplified} ) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data, isFetching } = useGetCryptosQuery(100);
   const [isFetchingNews, setIsFetchingNews] = useState(true);
-  console.log("REs", useGetCryptosQuery(100));
 
   const { data: cryptoNews } = useGetNewsQuery({
     newsCategory: newsCategory,

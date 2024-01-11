@@ -52,18 +52,17 @@ const Navbar = () => {
             >
                 {!collapsed ? (
                     <Row justify='space-between'>
-                        <Col span={18}>
+                        <Col span={16}>
                             <Row justify='end'>
-                                <Typography.Title level={2} className="logo">
+                                <Typography.Title level={3} className="logo">
                                     <Link to="/">CryptoInfo</Link>
                                 </Typography.Title>
                             </Row>
                         </Col>
-                        <Col span={5}>
+                        <Col span={6}>
                             <Avatar 
                                 className='avatar-logo'
                                 src={navbarLogo} 
-                                style={{marginTop:'8px'}} 
                                 onClick={addressToHome}
                             />
                         </Col>
