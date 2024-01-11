@@ -21,7 +21,6 @@ const CryptoDetails = () => {
     const cryptoDetails = data?.data?.coin;
 
     if (isFetching) return <BoxLoading />;
-    console.log(coinHistory);
 
     const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
@@ -107,7 +106,7 @@ const CryptoDetails = () => {
                         </p>
                     </Col>
                     {genericStats.map(({ icon, title, value }) => (
-                        <Col className="coin-stats" key={value}>
+                        <Col className="coin-stats" key={title}>
                             <Col className="coin-stats-name">
                                 <Text>{icon}</Text>
                                 <Text>{title}</Text>
@@ -133,12 +132,12 @@ const CryptoDetails = () => {
                     <Title level={3} className="coin-details-heading">
                         {cryptoDetails.name} Links
                     </Title>
-                    {cryptoDetails.links.map((link) => (
+                    {cryptoDetails.links.map((link, index) => (
                         <a
                             href={link.url}
                             target="_blank"
                             rel="noreferrer"
-                            key={link.type}
+                            key={index}
                             className="coin-link"
                         >
                             <Col span={12}>
@@ -150,7 +149,7 @@ const CryptoDetails = () => {
                                 span={12} 
                                 style={{display: 'flex', justifyContent: 'flex-end'}}
                             >
-                                <span>{link.name}</span>
+                                {link.name}
                             </Col>
                         </a>
                     ))}

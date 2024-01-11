@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { animateScroll as scroll } from "react-scroll";
-import { Row, Col, Typography, Avatar, Menu, Button, ConfigProvider } from 'antd'
+import { Row, Col, Typography, Avatar, Menu, Button } from 'antd'
 import { Link } from 'react-router-dom'
 import { HomeOutlined, DollarCircleOutlined, BulbOutlined, MenuOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import navbarLogo from '../../static/navbar-logo.svg'
@@ -69,23 +69,12 @@ const Navbar = () => {
                 </Button>
             </Row>
 
-            <ConfigProvider
-                theme={{
-                    components: {
-                        Menu: {
-                            itemSelectedColor: 'red',
-                            itemHoverBg: 'red',
-                        },
-                    },
-                }}
-                >
             <Menu
                 theme="dark" 
                 style={{
                     backgroundColor:'var(--text-primary)',
                 }}
                 inlineCollapsed={collapsed}
-                itemSelectedColor={'red'}
                 mode="inline"
             >
                 {!collapsed ? (
@@ -152,7 +141,6 @@ const Navbar = () => {
                     </Link>
                 </Menu.Item>
             </Menu>
-            </ConfigProvider>
             
             {visibleBtn ? (
                 <Row justify='center'>
