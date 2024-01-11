@@ -134,15 +134,25 @@ const CryptoDetails = () => {
                         {cryptoDetails.name} Links
                     </Title>
                     {cryptoDetails.links.map((link) => (
-                        <Row className="coin-link" key={link.type}>
-                            <Title level={5} className="link-name">
-                                {link.type}
-                            </Title>
-                            <a href={link.url} target="_blank" rel="noreferrer">
-                                {link.name}
-                            </a>
-                        </Row>
-                        // console.log(link)
+                        <a
+                            href={link.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={link.type}
+                            className="coin-link"
+                        >
+                            <Col span={12}>
+                                <Title level={5} className="link-name">
+                                    {link.type}
+                                </Title>
+                            </Col>
+                            <Col 
+                                span={12} 
+                                style={{display: 'flex', justifyContent: 'flex-end'}}
+                            >
+                                <span>{link.name}</span>
+                            </Col>
+                        </a>
                     ))}
                 </Col>
             </Col>
