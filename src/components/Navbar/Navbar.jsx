@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { animateScroll as scroll } from "react-scroll";
-import { Row, Col, Typography, Avatar, Menu, Button } from 'antd'
+import { Row, Col, Typography, Avatar, Menu, Button, ConfigProvider } from 'antd'
 import { Link } from 'react-router-dom'
 import { HomeOutlined, DollarCircleOutlined, BulbOutlined, MenuOutlined, ArrowUpOutlined } from '@ant-design/icons';
 import navbarLogo from '../../static/navbar-logo.svg'
@@ -11,6 +11,7 @@ const Navbar = () => {
     const [collapsed, setCollapsed] = useState(false);
     const [visibleBtn, setVisibleBtn] = useState(false)
     const [scrollTop, setScrollTop] = useState(500);
+    const [selectedItem, setSelectedItem] = useState(null);
 
     const navigate = useNavigate();
 
@@ -44,10 +45,23 @@ const Navbar = () => {
                 </Button>
             </Row>
 
+            <ConfigProvider
+                theme={{
+                    components: {
+                        Menu: {
+                            itemSelectedColor: 'red',
+                            itemHoverBg: 'red',
+                        },
+                    },
+                }}
+                >
             <Menu
                 theme="dark" 
-                style={{backgroundColor:'var(--text-primary)'}}
+                style={{
+                    backgroundColor:'var(--text-primary)',
+                }}
                 inlineCollapsed={collapsed}
+                itemSelectedColor={'red'}
                 mode="inline"
             >
                 {!collapsed ? (
@@ -79,20 +93,42 @@ const Navbar = () => {
                     )
                 }
                 
-                <Menu.Item key='1' icon={<HomeOutlined />}>
+                <Menu.Item
+                    icon={<HomeOutlined />}
+                    key='1'
+                    style={{
+                      backgroundColor: selectedItem === '1' ? '#243845' : 'transparent',
+                    }}
+                    onClick={() => setSelectedItem('1')}
+                >
                     <Link to='/'>Home</Link>
                 </Menu.Item>
-                <Menu.Item key='2' icon={<DollarCircleOutlined />}>
+                <Menu.Item 
+                    key='2' 
+                    icon={<DollarCircleOutlined />}
+                    style={{
+                        backgroundColor: selectedItem === '2' ? '#243845' : 'transparent',
+                    }}
+                    onClick={() => setSelectedItem('2')}
+                >
                     <Link to='/cryptos'>
                         Cryptos
                     </Link>
                 </Menu.Item>
-                <Menu.Item key='3' icon={<BulbOutlined />}>
+                <Menu.Item 
+                    key='3' 
+                    icon={<BulbOutlined />}
+                    style={{
+                        backgroundColor: selectedItem === '3' ? '#243845' : 'transparent',
+                    }}
+                    onClick={() => setSelectedItem('3')}
+                >
                     <Link to='/news'>
                         News
                     </Link>
                 </Menu.Item>
             </Menu>
+            </ConfigProvider>
             
             {visibleBtn ? (
                 <Row justify='center'>
