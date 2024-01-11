@@ -1,10 +1,10 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import SmoothList from 'react-smooth-list';
 import { BoxLoading } from 'react-loadingg';
 import { Row, Col, Card, Select, Typography, Image, Avatar } from 'antd';
 import { useGetNewsQuery } from '../../services/cryptoNewsApi';
 import { useGetCryptosQuery } from '../../services/cryptoApi';
-import moment from 'moment';
+import '../CryptoInfo/CryptoInfo.css';
 
 const { Text, Title } = Typography;
 const { Option } = Select;
@@ -12,14 +12,30 @@ const { Option } = Select;
 const CryptoNews = ( {simplified} ) => {
   const [newsCategory, setNewsCategory] = useState('Cryptocurrency');
   const { data, isFetching } = useGetCryptosQuery(100);
+  const [isFetchingNews, setIsFetchingNews] = useState(true);
+  console.log("REs", useGetCryptosQuery(100));
 
   const { data: cryptoNews } = useGetNewsQuery({
     newsCategory: newsCategory,
     count: simplified ? 10 : 100,
+    onSuccess: () => {
+      setIsFetchingNews(false);
+    }
   });
 
-  if ( isFetching ) return <BoxLoading />;
+  useEffect(() => {
+    if (cryptoNews) {
+      setIsFetchingNews(false);
+    }
+  }, [cryptoNews]);
 
+  if ( isFetchingNews ) {
+   return (
+    <Col span={24} style={{marginTop: '37vh'}}>
+      <BoxLoading />
+    </Col>
+   ) 
+  }
   return (
     <>
       <Row gutter={[ 24, 24 ]}>
@@ -35,55 +51,46 @@ const CryptoNews = ( {simplified} ) => {
             >
               <Option value="Cryptocurrency">Cryptocurrency</Option>
               {data?.data?.coins.map(
-                (coin) => <Option value={coin.name}>{coin.name}</Option>
+                (coin) => <Option value={coin.name} key={coin.name}>{coin.name}</Option>
               )}
             </Select>
           </Col>
         )}
-        
-        {cryptoNews?.value.map((news, index) => (
+
+        {cryptoNews?.data.map((news, index) => (
           <Col xs={24} sm={12} lg={8} key={index} className="crypto-card">
             <SmoothList transitionDuration={800}>
-              <Card 
+              <Card
                 hoverable
+                style={{ minHeight: '350px' }}
               >
                 <a href={news.url} target='_blank' rel="norefferer">
                   <Row justify='space-around'>
-                      {news?.image?.thumbnail ? (
+                      {news?.image? (
                         <Fragment>
                           <Col span={17}>
-                            <Title level={4}>{news.name}</Title>
+                            <Title level={4}>{news.title}</Title>
                           </Col>
                           <Col span={6}>
-                            <Image preview={false} src={news.image.thumbnail.contentUrl} />
+                            <Image preview={false} src={news.image} />
                           </Col>
                         </Fragment>
                         
                       ) : (
-                        <Col span={24}><Title level={4}>{news.name}</Title></Col>
+                        <Col span={24}><Title level={4}>{news.title}</Title></Col>
                       )}
-                    
                   </Row>
                   <p style={{marginTop:"20px"}}>
-                    {news.description > 100
-                      ? `${news.description.substring(0, 100)}...`
-                      : news.description
+                    {news.excerpt > 100
+                      ? `${news.excerpt.substring(0, 100)}...`
+                      : news.excerpt
                     }
                   </p>
                   <Row justify='space-around' align='middle'>
-                    <Col span={4}>
-                        <Avatar
-                          src={news.provider[0]?.image?.thumbnail?.contentUrl}
-                          alt='news'
-                        />
-                    </Col>
-                    <Col span={12} style={{textAlign:'center'}}>
-                        <Text>{news.provider[0]?.name}</Text>
-                    </Col>
-                    <Col span={8}>
+                    <Col span={24}>
                       <Row justify='end'>
                         <Text>
-                          {moment(news.datePublished).startOf('ss').fromNow()}
+                          {news.relativeTime}
                         </Text>
                       </Row>
                     </Col>

@@ -36,6 +36,7 @@ a:hover{
 }
 
 .routes{
+  min-height: 93vh;
   padding: 20px 60px 40px 60px;
   background-color: var(--light-gray);
 }
