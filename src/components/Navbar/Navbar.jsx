@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { animateScroll as scroll } from "react-scroll";
 import { Row, Col, Typography, Avatar, Menu, Button, ConfigProvider } from 'antd'
 import { Link } from 'react-router-dom'
@@ -14,6 +14,7 @@ const Navbar = () => {
     const [selectedItem, setSelectedItem] = useState(null);
 
     const navigate = useNavigate();
+    const {pathname}  = useLocation();
 
     const toggleCollapsed = () => {
         setCollapsed(!collapsed)
@@ -28,6 +29,21 @@ const Navbar = () => {
         scroll.scrollToTop();
     };
 
+    const menuItems = [
+        {
+            name: '/',
+            key: '1'
+        },
+        {
+            name: '/cryptos',
+            key: '2'
+        },
+        {
+            name: '/news',
+            key: '3'
+        }
+    ]
+
     useEffect(() => {
         const onScroll = e => {
             setScrollTop(e.target.documentElement.scrollTop);
@@ -36,6 +52,14 @@ const Navbar = () => {
         window.addEventListener("scroll", onScroll);
         return () => window.removeEventListener("scroll", onScroll);
     }, [scrollTop]);
+
+    useEffect(() => {
+        menuItems.map((item) => {
+            if (item.name === pathname) {
+                setSelectedItem(item.key);
+            }
+        })
+    }, [pathname]);
     
     return (
         <div className={collapsed ? 'navbar' : 'navbar-full'}>
@@ -98,8 +122,8 @@ const Navbar = () => {
                     key='1'
                     style={{
                       backgroundColor: selectedItem === '1' ? '#243845' : 'transparent',
+                      borderRadius: '10px'
                     }}
-                    onClick={() => setSelectedItem('1')}
                 >
                     <Link to='/'>Home</Link>
                 </Menu.Item>
@@ -108,8 +132,8 @@ const Navbar = () => {
                     icon={<DollarCircleOutlined />}
                     style={{
                         backgroundColor: selectedItem === '2' ? '#243845' : 'transparent',
+                        borderRadius: '10px'
                     }}
-                    onClick={() => setSelectedItem('2')}
                 >
                     <Link to='/cryptos'>
                         Cryptos
@@ -120,8 +144,8 @@ const Navbar = () => {
                     icon={<BulbOutlined />}
                     style={{
                         backgroundColor: selectedItem === '3' ? '#243845' : 'transparent',
+                        borderRadius: '10px'
                     }}
-                    onClick={() => setSelectedItem('3')}
                 >
                     <Link to='/news'>
                         News
