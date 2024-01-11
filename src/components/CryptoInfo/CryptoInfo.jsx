@@ -11,7 +11,7 @@ import { useGetCryptosQuery } from '../../services/cryptoApi';
 const { Search } = Input;
 
 const CryptoInfo = ({ simplified }) => {
-  const count = simplified ? 10 : 100;
+  const count = simplified ? 12 : 100;
   const { data: cryptosList, isFetching } = useGetCryptosQuery(count);
   const [cryptos, setCryptos] = useState(cryptosList?.data?.coins);
   const [searchText, setSearchText] = useState('');
@@ -51,7 +51,7 @@ const CryptoInfo = ({ simplified }) => {
                 <Card
                   key={index}
                   title={`${coin.rank}. ${coin.name}`}
-                  extra={<Image src={coin.iconUrl} preview={false} style={{width:'45px'}} />}
+                  extra={<Image src={coin.iconUrl} preview={false} style={{width:'45px', height: '45px', objectFit: 'cover'}} />}
                   style={{backgroundColor:"var(--light-white)"}}
                   hoverable
                 >

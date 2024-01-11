@@ -86,7 +86,7 @@ const Home = () => {
       >
         <Col span={12}>
           <TypeWriter typing={1} maxDelay={10} fixed={true}>
-            <Title level={2}>Top 10 Cryptocurrencies</Title>
+            <Title level={2}>Top 12 Cryptocurrencies</Title>
           </TypeWriter>
         </Col>
         <Col span={12}>

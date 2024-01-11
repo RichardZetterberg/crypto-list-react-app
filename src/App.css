@@ -4,6 +4,7 @@
   --bgSecondary: #3AAFA9;
   --light-green: #DEF2F1;
   --light-white: #FEFFFF;
+  --light-gray: #f2f2f2;
   --blue: #0071bd;
 
   --light-blue: #e6f7ff;
@@ -35,8 +36,9 @@ a:hover{
 }
 
 .routes{
-  padding: 20px;
-  background-color: var(--light-green);
+  min-height: 93vh;
+  padding: 20px 60px 40px 60px;
+  background-color: var(--light-gray);
 }
 
 /* width */

@@ -12,7 +12,7 @@ const Footer = () => {
 
     return (
         <Fragment>
-            <Row justify='space-around' className='footer'>
+            {/* <Row justify='space-around' className='footer'>
                 <Col span={8}>
                     <Row justify='center'>
                         <Link to='/' onClick={scrollToTop}>Home</Link>
@@ -28,7 +28,7 @@ const Footer = () => {
                         <Link to='/news' onClick={scrollToTop}>News</Link>
                     </Row>
                 </Col>
-            </Row>
+            </Row> */}
             <FooterRights />
         </Fragment>
     )
